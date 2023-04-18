@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
+import NavigationBar from './NavigationBar';
 
 export default function WebProjectList() {
     // Define the state of the web projects list
@@ -13,8 +15,25 @@ export default function WebProjectList() {
             .catch((error) => console.error(error)); // Log any errors to the console
     }, []);
 
+    // Function to handle delete project
+    const handleDeleteProject = (id) => {
+        // Make a DELETE request to the server to delete the project
+        fetch('http://localhost:8080/api/${id', {
+            method: 'DELETE',
+        })
+            .then((res) => res.json())
+            .then(() => {
+                // Remove the project from the projects state
+                setProjects((prevProjects) => 
+                    prevProjects.filter((project) => project.id !== id)
+                );
+            }) 
+            .catch((error) => console.error(error)); // Log any errors to the console
+    }
+
     return(
         <div>
+            <NavigationBar />
             <h1>Web Projects</h1>
             <Table striped bordered hover variant='dark'>
                 <thead>
@@ -23,6 +42,7 @@ export default function WebProjectList() {
                         <th>Name</th>
                         <th>Description</th>
                         <th>URL</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,6 +53,14 @@ export default function WebProjectList() {
                            <td>{project.title}</td>
                            <td>{project.description}</td>
                            <td>{project.URL}</td>  
+                           <td>
+                                <Button variant="outline-light">
+                                    Edit
+                                </Button>{' '}
+                                <Button variant="outline-light" onClick={() => handleDeleteProject(project.id)}>
+                                    Delete
+                                </Button>
+                           </td>
                         </tr>
                     ))}
                 </tbody>

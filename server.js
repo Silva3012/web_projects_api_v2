@@ -19,7 +19,6 @@ let webProjects = [
 
 //Create a GET route to return the array of 'Web project' items when the user navigates to http://localhost:8080/api:
 app.get('/api', (req, res) => {
-    res.setHeader('Content-Type', 'application/json');
     res.json(webProjects);
 });
 
