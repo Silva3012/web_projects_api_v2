@@ -16,6 +16,15 @@ export default function AddProject() {
     const handleSubmit = (event) => {
         event.preventDefault(); // Prevent the page from refreshing on page submit
 
+        // Parse the ID input as an interger
+        const parsedId = parseInt(id);
+
+        // Check if the ID input is a valid interger
+        if (isNaN(parsedId)) {
+            alert('Please enter a valid interger for ID');
+            return;
+        }
+
          // Check if all required fields have been filled in
         if (!id || !title || !description || !url) {
             alert('Please fill in all required fields');
@@ -24,7 +33,7 @@ export default function AddProject() {
 
         // Create a new project object with the form input values
         const newProject = {
-            id,
+            id: parsedId,
             title,
             description,
             URL: url,
