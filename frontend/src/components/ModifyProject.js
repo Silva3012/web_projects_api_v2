@@ -20,7 +20,7 @@ export default function ModifyProject() {
 
     // Fetch the project data from the server and populate the form fields
     useEffect(() => {
-        fetch(`http://localhost:8080/api/${id}`)
+        fetch(`https://web-projects-ii.onrender.com/api/${id}`)
             .then(res => res.json())
             .then(data => {
                 setTitle(data.title);
@@ -42,7 +42,7 @@ export default function ModifyProject() {
         };
 
         // Sent a PUT request to the server with the modified project data
-        fetch(`http://localhost:8080/api/${id}`, {
+        fetch(`https://web-projects-ii.onrender.com/api/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type' : 'application/json',

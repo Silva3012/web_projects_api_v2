@@ -12,7 +12,7 @@ export default function WebProjectList() {
 
     // Use effect to fetch the web projects from the server when component mounts
     useEffect(() => {
-        fetch('http://localhost:8080/api')
+        fetch('https://web-projects-ii.onrender.com/api')
             .then((res) => res.json()) // Convert the reponse to JSON format
             .then((data) => setProjects(data)) // Update the projects state with the fecthed data
             .catch((error) => console.error(error)); // Log any errors to the console
@@ -21,7 +21,7 @@ export default function WebProjectList() {
     // Function to handle delete project
     const handleDeleteProject = (id) => {
         // Make a DELETE request to the server to delete the project
-        fetch(`http://localhost:8080/api/${id}`, {
+        fetch(`https://web-projects-ii.onrender.com/api/${id}`, {
             method: 'DELETE',
         })
             .then((res) => res.json())

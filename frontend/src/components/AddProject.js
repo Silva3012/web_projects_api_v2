@@ -40,7 +40,7 @@ export default function AddProject() {
         };
 
         // Send a POST request to the server with the new project data
-        fetch('http://localhost:8080/api', {
+        fetch('https://web-projects-ii.onrender.com/api', {
             method: 'POST',
             headers: {
                 'Content-Type' : 'application/json',
