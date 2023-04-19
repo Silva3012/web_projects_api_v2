@@ -22,6 +22,16 @@ app.get('/api', (req, res) => {
     res.json(webProjects);
 });
 
+app.get('/api/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  const project = webProjects.find(project => project.id === id);
+  if (project) {
+    res.json(project);
+  } else {
+    res.sendStatus(404);
+  }
+});
+
 //Create a POST route to add a new item to the array of 'Web project' items:
 app.post('/api', (req, res) => {
     //Extract the new web project from the request body
@@ -53,6 +63,7 @@ app.put('/api/:id', (req, res) => {
         if (webProject.id === parseInt(id)) {
             webProject.title = updatedWebProject.title || webProject.title;
             webProject.description = updatedWebProject.description || webProject.description;
+            webProject.URL = updatedWebProject.URL || webProject.URL;
         }
         return webProject;
     });
