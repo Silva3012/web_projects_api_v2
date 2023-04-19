@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
@@ -71,8 +72,8 @@ app.put('/api/:id', (req, res) => {
     res.json(webProjects);
 });
 
-app.listen(8080, () => {
-    console.log('Server started on port 8080');
+app.listen(PORT, () => {
+    console.log(`SERVER STARTED ON ${PORT}`);
 });
 
 /*
